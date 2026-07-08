@@ -1,0 +1,18 @@
+{
+  "covariance_shape": [
+    72,
+    72
+  ],
+  "diag_max": 34.40080388054978,
+  "diag_min": 2.3932627535223037e-06,
+  "eig_max": 51.770286091945465,
+  "eig_min": 2.1516784789554516e-08,
+  "hartlap_factor_for_precision": 0.23157894736842105,
+  "leaveoneout_shape": [
+    96,
+    72
+  ],
+  "n_data": 72,
+  "n_jackknife": 96,
+  "rank": 72
+}

@@ -1,0 +1,22 @@
+{
+  "entries": {
+    "halo_info": {
+      "exists": false,
+      "n_files": 0,
+      "path": "data/abacus_summit_minimal/AbacusSummit_base_c000_ph000/halos/z0.800/halo_info",
+      "size_gb": 0.0
+    },
+    "halo_rv_A": {
+      "exists": false,
+      "n_files": 0,
+      "path": "data/abacus_summit_minimal/AbacusSummit_base_c000_ph000/halos/z0.800/halo_rv_A",
+      "size_gb": 0.0
+    }
+  },
+  "min_expected_gb": 80.0,
+  "ok": false,
+  "sim_name": "AbacusSummit_base_c000_ph000",
+  "sim_root": "data/abacus_summit_minimal",
+  "total_size_gb": 0.0,
+  "zdir": "z0.800"
+}

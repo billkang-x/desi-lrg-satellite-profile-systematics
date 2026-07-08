@@ -1,0 +1,29 @@
+desi_dr1_lss:
+  release: dr1
+  spectro_reduction: iron
+  lss_version: v1.5
+  base_url: https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5
+  tracer: LRG
+  caps:
+    NGC:
+      data: LRG_NGC_clustering.dat.fits
+      nz: LRG_NGC_nz.txt
+      random_template: LRG_NGC_{index}_clustering.ran.fits
+      random_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+    SGC:
+      data: LRG_SGC_clustering.dat.fits
+      nz: LRG_SGC_nz.txt
+      random_template: LRG_SGC_{index}_clustering.ran.fits
+      random_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+  docs:
+    release: https://data.desi.lbl.gov/doc/releases/dr1/
+    directory: https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/
+    data_model: https://desidatamodel.readthedocs.io/en/25.3/DESI_ROOT/vac/RELEASE/lss/VERSION/LSScats/clustering/clustering_dat.html
+    random_model: https://desidatamodel.readthedocs.io/en/25.3/DESI_ROOT/vac/RELEASE/lss/VERSION/LSScats/clustering/clustering_ran.html
+
+desi_dr1_mocks:
+  base_url: https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/mocks
+  covariance_candidate: EZmock
+  validation_candidate: AbacusSummit
+  note: Use official DESI mock organization after the observed-data measurement is stable.
+

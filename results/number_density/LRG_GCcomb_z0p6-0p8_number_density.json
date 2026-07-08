@@ -1,0 +1,45 @@
+{
+  "cap_summaries": [
+    {
+      "area_deg2": 3755.8352,
+      "cap": "NGC",
+      "effective_area_deg2": 3464.9234532477117,
+      "n_bins": 20,
+      "n_weighted": 682136.9191310812,
+      "nbar_h3_mpc3": 0.000532017635246263,
+      "path": "data\\dr1_lss_v1.5\\LRG_NGC_nz.txt",
+      "volume_mpc_h3": 1282169751.4130902,
+      "zeff_volume_weighted": 0.7056225565915062,
+      "zmax": 0.8,
+      "zmin": 0.6
+    },
+    {
+      "area_deg2": 1983.8884,
+      "cap": "SGC",
+      "effective_area_deg2": 1770.198402421271,
+      "n_bins": 20,
+      "n_weighted": 347667.35597109474,
+      "nbar_h3_mpc3": 0.0005307501041280874,
+      "path": "data\\dr1_lss_v1.5\\LRG_SGC_nz.txt",
+      "volume_mpc_h3": 655049058.4306908,
+      "zeff_volume_weighted": 0.7056225565915056,
+      "zmax": 0.8,
+      "zmin": 0.6
+    }
+  ],
+  "caps": [
+    "NGC",
+    "SGC"
+  ],
+  "n_weighted": 1029804.275102176,
+  "nbar_h3_mpc3": 0.0005315890336544999,
+  "notes": [
+    "nbar_h3_mpc3 is volume-weighted over full n(z) bins inside the requested redshift interval.",
+    "Volumes are the DESI LSScats Vol_bin values, in (Mpc/h)^3."
+  ],
+  "tracer": "LRG",
+  "volume_mpc_h3": 1937218809.843781,
+  "zeff_volume_weighted": 0.7056225565915061,
+  "zmax": 0.8,
+  "zmin": 0.6
+}

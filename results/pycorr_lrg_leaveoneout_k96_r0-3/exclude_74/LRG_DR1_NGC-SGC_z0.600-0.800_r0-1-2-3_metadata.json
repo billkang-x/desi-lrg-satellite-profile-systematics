@@ -1,0 +1,137 @@
+{
+  "args": {
+    "caps": "NGC,SGC",
+    "data_dir": "data/dr1_lss_v1.5",
+    "distance_grid_size": 200000,
+    "ells": "0,2,4",
+    "engine": "corrfunc",
+    "hubble_h": 0.6736,
+    "jackknife_centers": "data/jackknife/LRG_DR1_z0p6-0p8_kmeans96_centers.csv",
+    "jackknife_dec_max": 90.0,
+    "jackknife_dec_min": -30.0,
+    "jackknife_exclude_sample": 74,
+    "jackknife_ndec": 0,
+    "jackknife_nra": 0,
+    "jackknife_ra_max": 360.0,
+    "jackknife_ra_min": 0.0,
+    "los": "midpoint",
+    "max_data_rows": 0,
+    "max_random_rows": 0,
+    "mu_bins": 120,
+    "no_weights": false,
+    "nthreads": 32,
+    "omega_m": 0.315192,
+    "output_dir": "results/pycorr_lrg_leaveoneout_k96_r0-3/exclude_74",
+    "pi_bins": 80,
+    "pi_max": 80.0,
+    "random_indices": "0-3",
+    "rp_bins": 18,
+    "rp_max": 30.0,
+    "rp_min": 0.3,
+    "rp_spacing": "log",
+    "s_bins": 29,
+    "s_max": 60.0,
+    "s_min": 2.0,
+    "seed": 12345,
+    "skip_rppi": false,
+    "skip_smu": false,
+    "tracer": "LRG",
+    "weight_columns": "WEIGHT",
+    "zmax": 0.8,
+    "zmin": 0.6
+  },
+  "created_utc": "2026-06-29T02:54:52Z",
+  "data_summary": [
+    {
+      "path": "data/dr1_lss_v1.5/LRG_NGC_clustering.dat.fits",
+      "rows_after_cuts": 527559,
+      "weighted_sum": 530349.0927202683,
+      "z_max": 0.7999997036596772,
+      "z_median": 0.7089845936445129,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_clustering.dat.fits",
+      "rows_after_cuts": 237939,
+      "weighted_sum": 242820.02627356866,
+      "z_max": 0.7999993671887309,
+      "z_median": 0.7072185945065618,
+      "z_min": 0.6000008812311504
+    }
+  ],
+  "desi_lss_base_url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5",
+  "label": "LRG_DR1_NGC-SGC_z0.600-0.800_r0-1-2-3",
+  "notes": [
+    "Distances are flat-LCDM comoving distances in Mpc/h.",
+    "Default weights use DESI catalog WEIGHT only.",
+    "Use multiple random catalogs and no sampling limits for publication measurements."
+  ],
+  "nranks": 1,
+  "random_summary": [
+    {
+      "path": "data/dr1_lss_v1.5/LRG_NGC_0_clustering.ran.fits",
+      "rows_after_cuts": 3356337,
+      "weighted_sum": 3439695.580176635,
+      "z_max": 0.7999997036596772,
+      "z_median": 0.7086145609539909,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_NGC_1_clustering.ran.fits",
+      "rows_after_cuts": 3353653,
+      "weighted_sum": 3431114.0637768623,
+      "z_max": 0.7999997036596772,
+      "z_median": 0.7087797017367647,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_NGC_2_clustering.ran.fits",
+      "rows_after_cuts": 3354929,
+      "weighted_sum": 3434088.365073514,
+      "z_max": 0.7999997036596772,
+      "z_median": 0.708613346661191,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_NGC_3_clustering.ran.fits",
+      "rows_after_cuts": 3357477,
+      "weighted_sum": 3440630.477320609,
+      "z_max": 0.7999997036596772,
+      "z_median": 0.7086661179022339,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_0_clustering.ran.fits",
+      "rows_after_cuts": 1786229,
+      "weighted_sum": 1573105.5125097197,
+      "z_max": 0.7999997036596772,
+      "z_median": 0.7081795641775429,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_1_clustering.ran.fits",
+      "rows_after_cuts": 1784720,
+      "weighted_sum": 1567864.6944895461,
+      "z_max": 0.7999997036596772,
+      "z_median": 0.7082485957503499,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_2_clustering.ran.fits",
+      "rows_after_cuts": 1784134,
+      "weighted_sum": 1569624.7116460225,
+      "z_max": 0.7999997036596772,
+      "z_median": 0.7081368346266326,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_3_clustering.ran.fits",
+      "rows_after_cuts": 1784603,
+      "weighted_sum": 1571876.352787137,
+      "z_max": 0.7999995472665771,
+      "z_median": 0.7081629806850301,
+      "z_min": 0.6000000310616825
+    }
+  ],
+  "runtime_seconds": 149.532856464386
+}

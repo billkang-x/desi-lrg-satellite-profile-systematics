@@ -1,0 +1,43 @@
+# Large external data products
+data/
+
+# Local environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Local logs and temporary staging products
+logs/
+wheelhouse_corrfunc_probe/
+
+# Large or regenerated scientific data products
+*.asdf
+*.fits
+*.hdf5
+*.h5
+*.npy
+*.npz
+*.parquet
+*.pkl
+*.pickle
+*.tar
+*.tar.gz
+*.zip
+
+# LaTeX build products
+paper/*.aux
+paper/*.bbl
+paper/*.bcf
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.run.xml
+paper/*.synctex.gz
+paper/main.pdf
+
+# OS metadata
+.DS_Store
+Thumbs.db

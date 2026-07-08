@@ -1,0 +1,70 @@
+project:
+  title: Constraining satellite fraction and velocity bias from DESI DR1 galaxy clustering with HOD/SHAM mocks
+  tracer: LRG
+  release: DESI DR1
+  lss_version: v1.5
+
+sample:
+  caps: [NGC, SGC]
+  z_range: [0.4, 1.1]
+  z_bins:
+    - [0.4, 0.6]
+    - [0.6, 0.8]
+    - [0.8, 1.1]
+  columns:
+    position: [RA, DEC, Z]
+    weights: [WEIGHT]
+    validation: [NZ, WEIGHT_FKP, WEIGHT_ZFAIL, FRACZ_TILELOCID, PROB_OBS]
+
+measurements:
+  projected_correlation:
+    statistic: wp
+    rp_min: 0.3
+    rp_max: 30.0
+    n_bins: 18
+    pi_max: 80.0
+  redshift_space_multipoles:
+    statistic: xi_l
+    ells: [0, 2]
+    s_min: 2.0
+    s_max: 60.0
+    n_bins: 24
+  density:
+    use_nz_constraint: true
+
+model:
+  primary: AbacusHOD
+  comparison: SHAM
+  simulation_family: AbacusSummit
+  baseline_hod_parameters:
+    - logM_cut
+    - logM_1
+    - sigma
+    - alpha
+    - kappa
+  velocity_bias_parameters:
+    - alpha_c
+    - alpha_s
+  derived_parameters:
+    - f_sat
+    - mean_host_halo_mass
+    - galaxy_bias
+  deferred_parameters:
+    - assembly_bias
+    - satellite_profile_flexibility
+
+covariance:
+  validation: jackknife_or_reduced_mock_set
+  publication: DESI_DR1_EZmocks
+  validation_mocks: DESI_DR1_AbacusSummit
+
+scale_cut_policy:
+  baseline:
+    wp_min: 0.5
+    xi_min: 5.0
+  stress_tests:
+    - small_scale_inclusion
+    - conservative_scale_cut
+    - cap_split
+    - redshift_split
+

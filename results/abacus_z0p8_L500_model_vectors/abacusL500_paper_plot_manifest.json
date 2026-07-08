@@ -1,0 +1,39 @@
+{
+  "catalog": "data\\abacus_summit\\processed\\abacus_z0p8_L500_x000-008_lrg_candidates.hdf5",
+  "component_summary": "results\\abacus_z0p8_L500_model_vectors\\abacusL500_paper_plot_component_summary.csv",
+  "covariance": "results/matched_covariance/LRG_DR1_kmeans96_r0-1-2-3_full_wp_xi_covariance.npy",
+  "grid": "results\\abacus_z0p8_L500_fsat_alpha_low\\hod_catalog_fsat_alpha_grid.csv",
+  "long_table": "results\\abacus_z0p8_L500_model_vectors\\abacusL500_paper_plot_long.csv",
+  "n_bins": 72,
+  "n_models": 20,
+  "observed_datavector": "results/datavectors/LRG_DR1_NGC-SGC_z0.600-0.800_r0-1-2-3_wp0.5-30_xi5-60_ells02_datavector.csv",
+  "score_grids": [
+    "heuristic=results\\abacus_z0p8_L500_fsat_alpha_low\\hod_catalog_fsat_alpha_grid.csv",
+    "diagcov=results\\abacus_z0p8_L500_fsat_alpha_low_covjk96_diag\\hod_catalog_fsat_alpha_grid.csv",
+    "fullcov=results\\abacus_z0p8_L500_fsat_alpha_low_covjk96\\hod_catalog_fsat_alpha_grid.csv"
+  ],
+  "selected_long_table": "results\\abacus_z0p8_L500_model_vectors\\abacusL500_paper_plot_selected_long.csv",
+  "vector_dir": "results\\abacus_z0p8_L500_model_vectors\\vectors",
+  "vector_files": [
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p030_alphaS0p800_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p030_alphaS1p000_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p030_alphaS1p200_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p040_alphaS0p800_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p040_alphaS1p000_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p030_alphaS0p600_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p040_alphaS1p200_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p020_alphaS0p800_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p020_alphaS1p000_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p040_alphaS0p600_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p020_alphaS1p200_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p020_alphaS0p600_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p010_alphaS0p800_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p010_alphaS1p000_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p010_alphaS1p200_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p010_alphaS0p600_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p000_alphaS0p600_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p000_alphaS0p800_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p000_alphaS1p000_model_vector.csv",
+    "results\\abacus_z0p8_L500_model_vectors\\vectors\\abacusL500_fsat0p000_alphaS1p200_model_vector.csv"
+  ]
+}

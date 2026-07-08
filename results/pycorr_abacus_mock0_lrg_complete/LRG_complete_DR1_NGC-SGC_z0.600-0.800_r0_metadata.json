@@ -1,0 +1,81 @@
+{
+  "args": {
+    "caps": "NGC,SGC",
+    "data_dir": "data/abacussummit_dr1_mock0_lrg_complete",
+    "distance_grid_size": 200000,
+    "ells": "0,2,4",
+    "engine": "corrfunc",
+    "hubble_h": 0.6736,
+    "los": "midpoint",
+    "max_data_rows": 0,
+    "max_random_rows": 0,
+    "mu_bins": 120,
+    "no_weights": false,
+    "nthreads": 32,
+    "omega_m": 0.315192,
+    "output_dir": "results/pycorr_abacus_mock0_lrg_complete",
+    "pi_bins": 80,
+    "pi_max": 80.0,
+    "random_indices": "0",
+    "rp_bins": 18,
+    "rp_max": 30.0,
+    "rp_min": 0.3,
+    "rp_spacing": "log",
+    "s_bins": 29,
+    "s_max": 60.0,
+    "s_min": 2.0,
+    "seed": 12345,
+    "skip_rppi": false,
+    "skip_smu": false,
+    "tracer": "LRG_complete",
+    "weight_columns": "WEIGHT",
+    "zmax": 0.8,
+    "zmin": 0.6
+  },
+  "created_utc": "2026-06-28T15:20:26Z",
+  "data_summary": [
+    {
+      "path": "data/abacussummit_dr1_mock0_lrg_complete/LRG_complete_NGC_clustering.dat.fits",
+      "rows_after_cuts": 898567,
+      "weighted_sum": 898567.0,
+      "z_max": 0.7999998927116394,
+      "z_median": 0.7080029845237732,
+      "z_min": 0.6000006198883057
+    },
+    {
+      "path": "data/abacussummit_dr1_mock0_lrg_complete/LRG_complete_SGC_clustering.dat.fits",
+      "rows_after_cuts": 506148,
+      "weighted_sum": 506148.0,
+      "z_max": 0.7999995350837708,
+      "z_median": 0.7082341611385345,
+      "z_min": 0.6000005006790161
+    }
+  ],
+  "desi_lss_base_url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5",
+  "label": "LRG_complete_DR1_NGC-SGC_z0.600-0.800_r0",
+  "notes": [
+    "Distances are flat-LCDM comoving distances in Mpc/h.",
+    "Default weights use DESI catalog WEIGHT only.",
+    "Use multiple random catalogs and no sampling limits for publication measurements."
+  ],
+  "nranks": 1,
+  "random_summary": [
+    {
+      "path": "data/abacussummit_dr1_mock0_lrg_complete/LRG_complete_NGC_0_clustering.ran.fits",
+      "rows_after_cuts": 4101517,
+      "weighted_sum": 4109725.127304363,
+      "z_max": 0.7999998927116394,
+      "z_median": 0.7081239223480225,
+      "z_min": 0.6000005602836609
+    },
+    {
+      "path": "data/abacussummit_dr1_mock0_lrg_complete/LRG_complete_SGC_0_clustering.ran.fits",
+      "rows_after_cuts": 2303617,
+      "weighted_sum": 2310203.96199282,
+      "z_max": 0.7999998927116394,
+      "z_median": 0.7081854939460754,
+      "z_min": 0.6000005006790161
+    }
+  ],
+  "runtime_seconds": 39.13591718673706
+}

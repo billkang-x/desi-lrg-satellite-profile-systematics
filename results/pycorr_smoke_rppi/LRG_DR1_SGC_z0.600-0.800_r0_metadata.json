@@ -1,0 +1,64 @@
+{
+  "args": {
+    "caps": "SGC",
+    "data_dir": "data/dr1_lss_v1.5",
+    "distance_grid_size": 200000,
+    "ells": "0,2,4",
+    "engine": "corrfunc",
+    "hubble_h": 0.6736,
+    "los": "midpoint",
+    "max_data_rows": 1000,
+    "max_random_rows": 2000,
+    "mu_bins": 120,
+    "nthreads": 2,
+    "omega_m": 0.315192,
+    "output_dir": "results/pycorr_smoke_rppi",
+    "pi_bins": 10,
+    "pi_max": 20.0,
+    "random_indices": "0",
+    "rp_bins": 6,
+    "rp_max": 20.0,
+    "rp_min": 0.5,
+    "rp_spacing": "log",
+    "s_bins": 29,
+    "s_max": 60.0,
+    "s_min": 2.0,
+    "seed": 12345,
+    "skip_rppi": false,
+    "skip_smu": true,
+    "tracer": "LRG",
+    "weight_columns": "WEIGHT",
+    "zmax": 0.8,
+    "zmin": 0.6
+  },
+  "created_utc": "2026-06-28T04:31:21Z",
+  "data_summary": [
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_clustering.dat.fits",
+      "rows_after_cuts": 1000,
+      "weighted_sum": 1051.153025959094,
+      "z_max": 0.7998441168261802,
+      "z_median": 0.7101031174832051,
+      "z_min": 0.6000363145493913
+    }
+  ],
+  "desi_lss_base_url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5",
+  "label": "LRG_DR1_SGC_z0.600-0.800_r0",
+  "notes": [
+    "Distances are flat-LCDM comoving distances in Mpc/h.",
+    "Default weights use DESI catalog WEIGHT only.",
+    "Use multiple random catalogs and no sampling limits for publication measurements."
+  ],
+  "nranks": 1,
+  "random_summary": [
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_0_clustering.ran.fits",
+      "rows_after_cuts": 2000,
+      "weighted_sum": 1760.88474408238,
+      "z_max": 0.7999858032651209,
+      "z_median": 0.7061818678747855,
+      "z_min": 0.6000356581874053
+    }
+  ],
+  "runtime_seconds": 3.4078025817871094
+}

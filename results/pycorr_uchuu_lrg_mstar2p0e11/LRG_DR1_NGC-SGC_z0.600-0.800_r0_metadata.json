@@ -1,0 +1,81 @@
+{
+  "args": {
+    "caps": "NGC,SGC",
+    "data_dir": "data/uchuu_lrg_edr_v1.0_mstar2p0e11",
+    "distance_grid_size": 200000,
+    "ells": "0,2,4",
+    "engine": "corrfunc",
+    "hubble_h": 0.6736,
+    "los": "midpoint",
+    "max_data_rows": 0,
+    "max_random_rows": 0,
+    "mu_bins": 120,
+    "no_weights": true,
+    "nthreads": 16,
+    "omega_m": 0.315192,
+    "output_dir": "results/pycorr_uchuu_lrg_mstar2p0e11",
+    "pi_bins": 80,
+    "pi_max": 80.0,
+    "random_indices": "0",
+    "rp_bins": 18,
+    "rp_max": 30.0,
+    "rp_min": 0.3,
+    "rp_spacing": "log",
+    "s_bins": 29,
+    "s_max": 60.0,
+    "s_min": 2.0,
+    "seed": 12345,
+    "skip_rppi": false,
+    "skip_smu": false,
+    "tracer": "LRG",
+    "weight_columns": "WEIGHT",
+    "zmax": 0.8,
+    "zmin": 0.6
+  },
+  "created_utc": "2026-06-28T06:52:12Z",
+  "data_summary": [
+    {
+      "path": "data/uchuu_lrg_edr_v1.0_mstar2p0e11/LRG_NGC_clustering.dat.fits",
+      "rows_after_cuts": 5625,
+      "weighted_sum": 5625.0,
+      "z_max": 0.7999356765471797,
+      "z_median": 0.6994809121839904,
+      "z_min": 0.6000210698968858
+    },
+    {
+      "path": "data/uchuu_lrg_edr_v1.0_mstar2p0e11/LRG_SGC_clustering.dat.fits",
+      "rows_after_cuts": 6131,
+      "weighted_sum": 6131.0,
+      "z_max": 0.799980888284473,
+      "z_median": 0.71211030485857,
+      "z_min": 0.6000057828232181
+    }
+  ],
+  "desi_lss_base_url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5",
+  "label": "LRG_DR1_NGC-SGC_z0.600-0.800_r0",
+  "notes": [
+    "Distances are flat-LCDM comoving distances in Mpc/h.",
+    "Default weights use DESI catalog WEIGHT only.",
+    "Use multiple random catalogs and no sampling limits for publication measurements."
+  ],
+  "nranks": 1,
+  "random_summary": [
+    {
+      "path": "data/uchuu_lrg_edr_v1.0_mstar2p0e11/LRG_NGC_0_clustering.ran.fits",
+      "rows_after_cuts": 287203,
+      "weighted_sum": 287203.0,
+      "z_max": 0.7999924924826033,
+      "z_median": 0.700961349441184,
+      "z_min": 0.6000045789756482
+    },
+    {
+      "path": "data/uchuu_lrg_edr_v1.0_mstar2p0e11/LRG_SGC_0_clustering.ran.fits",
+      "rows_after_cuts": 297555,
+      "weighted_sum": 297555.0,
+      "z_max": 0.7999936615649488,
+      "z_median": 0.7026193823760077,
+      "z_min": 0.6000137694179081
+    }
+  ],
+  "runtime_seconds": 12.228025436401367
+}

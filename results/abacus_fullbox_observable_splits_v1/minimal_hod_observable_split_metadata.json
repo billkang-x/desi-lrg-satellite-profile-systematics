@@ -1,0 +1,86 @@
+{
+  "covariance": "results/matched_covariance/LRG_DR1_kmeans96_r0-1-2-3_full_wp_xi_covariance.npy",
+  "covariance_modes": [
+    "diagonal",
+    "full"
+  ],
+  "grid_csv": "results/abacus_fullbox_minimal_hod_fsat0p15_alpha_v1/abacus_fullbox_minimal_hod_fsat_alpha_grid.csv",
+  "hartlap": true,
+  "label": "minimal_hod",
+  "model_dir": "results/abacus_fullbox_minimal_hod_fsat0p15_alpha_v1",
+  "n_realizations": 96,
+  "observed_datavector": "results/datavectors/LRG_DR1_NGC-SGC_z0.600-0.800_r0-1-2-3_wp0.5-30_xi5-60_ells02_datavector.csv",
+  "splits": [
+    "wp",
+    "xi02",
+    "joint"
+  ],
+  "summary": [
+    {
+      "best_alpha_s": 0.5,
+      "best_chi2": 353.3862443935345,
+      "best_f_sat": 0.02,
+      "best_f_sat_actual": 0.019999943565423665,
+      "covariance_mode": "diagonal",
+      "delta_chi2_to_second": 0.008308269313374694,
+      "hartlap_scale": 0.8210526315789474,
+      "label": "minimal_hod",
+      "split": "wp"
+    },
+    {
+      "best_alpha_s": 0.5,
+      "best_chi2": 185.74498869364803,
+      "best_f_sat": 0.02,
+      "best_f_sat_actual": 0.019999943565423665,
+      "covariance_mode": "full",
+      "delta_chi2_to_second": 0.021633508565855664,
+      "hartlap_scale": 0.8210526315789474,
+      "label": "minimal_hod",
+      "split": "wp"
+    },
+    {
+      "best_alpha_s": 1.3,
+      "best_chi2": 833.3967449667944,
+      "best_f_sat": 0.04,
+      "best_f_sat_actual": 0.03999988713084733,
+      "covariance_mode": "diagonal",
+      "delta_chi2_to_second": 3.225318381090119,
+      "hartlap_scale": 0.4,
+      "label": "minimal_hod",
+      "split": "xi02"
+    },
+    {
+      "best_alpha_s": 1.3,
+      "best_chi2": 3958.3115096153565,
+      "best_f_sat": 0.06,
+      "best_f_sat_actual": 0.06000006584033906,
+      "covariance_mode": "full",
+      "delta_chi2_to_second": 168.25957465775218,
+      "hartlap_scale": 0.4,
+      "label": "minimal_hod",
+      "split": "xi02"
+    },
+    {
+      "best_alpha_s": 1.3,
+      "best_chi2": 786.8310896874505,
+      "best_f_sat": 0.02,
+      "best_f_sat_actual": 0.019999943565423665,
+      "covariance_mode": "diagonal",
+      "delta_chi2_to_second": 2.3819759258108206,
+      "hartlap_scale": 0.23157894736842105,
+      "label": "minimal_hod",
+      "split": "joint"
+    },
+    {
+      "best_alpha_s": 0.7,
+      "best_chi2": 944.7319459684787,
+      "best_f_sat": 0.04,
+      "best_f_sat_actual": 0.03999988713084733,
+      "covariance_mode": "full",
+      "delta_chi2_to_second": 16.256034735846242,
+      "hartlap_scale": 0.23157894736842105,
+      "label": "minimal_hod",
+      "split": "joint"
+    }
+  ]
+}

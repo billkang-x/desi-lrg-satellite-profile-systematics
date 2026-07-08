@@ -1,0 +1,88 @@
+{
+  "args": {
+    "caps": "NGC,SGC",
+    "data_dir": "data/dr1_lss_v1.5",
+    "distance_grid_size": 200000,
+    "ells": "0,2,4",
+    "engine": "corrfunc",
+    "hubble_h": 0.6736,
+    "jackknife_dec_max": 90.0,
+    "jackknife_dec_min": -30.0,
+    "jackknife_exclude_sample": -1,
+    "jackknife_ndec": 2,
+    "jackknife_nra": 2,
+    "jackknife_ra_max": 360.0,
+    "jackknife_ra_min": 0.0,
+    "los": "midpoint",
+    "max_data_rows": 40000,
+    "max_random_rows": 160000,
+    "mu_bins": 120,
+    "no_weights": false,
+    "nthreads": 32,
+    "omega_m": 0.315192,
+    "output_dir": "results/pycorr_lrg_jackknife_smoke2",
+    "pi_bins": 80,
+    "pi_max": 80.0,
+    "random_indices": "0",
+    "rp_bins": 18,
+    "rp_max": 30.0,
+    "rp_min": 0.3,
+    "rp_spacing": "log",
+    "s_bins": 29,
+    "s_max": 60.0,
+    "s_min": 2.0,
+    "seed": 12345,
+    "skip_rppi": false,
+    "skip_smu": false,
+    "tracer": "LRG",
+    "weight_columns": "WEIGHT",
+    "zmax": 0.8,
+    "zmin": 0.6
+  },
+  "created_utc": "2026-06-29T02:10:53Z",
+  "data_summary": [
+    {
+      "path": "data/dr1_lss_v1.5/LRG_NGC_clustering.dat.fits",
+      "rows_after_cuts": 40000,
+      "weighted_sum": 40308.2604172952,
+      "z_max": 0.7999981889311868,
+      "z_median": 0.7086815111751871,
+      "z_min": 0.6000070304645411
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_clustering.dat.fits",
+      "rows_after_cuts": 40000,
+      "weighted_sum": 40740.12993264936,
+      "z_max": 0.7999987911407411,
+      "z_median": 0.706566934888778,
+      "z_min": 0.6000082067118359
+    }
+  ],
+  "desi_lss_base_url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5",
+  "label": "LRG_DR1_NGC-SGC_z0.600-0.800_r0",
+  "notes": [
+    "Distances are flat-LCDM comoving distances in Mpc/h.",
+    "Default weights use DESI catalog WEIGHT only.",
+    "Use multiple random catalogs and no sampling limits for publication measurements."
+  ],
+  "nranks": 1,
+  "random_summary": [
+    {
+      "path": "data/dr1_lss_v1.5/LRG_NGC_0_clustering.ran.fits",
+      "rows_after_cuts": 160000,
+      "weighted_sum": 163971.64907394315,
+      "z_max": 0.7999987911407411,
+      "z_median": 0.7085422053935986,
+      "z_min": 0.6000000310616825
+    },
+    {
+      "path": "data/dr1_lss_v1.5/LRG_SGC_0_clustering.ran.fits",
+      "rows_after_cuts": 160000,
+      "weighted_sum": 140882.67997774424,
+      "z_max": 0.7999993671887309,
+      "z_median": 0.7079009730100226,
+      "z_min": 0.6000011048496428
+    }
+  ],
+  "runtime_seconds": 21.605947971343994
+}

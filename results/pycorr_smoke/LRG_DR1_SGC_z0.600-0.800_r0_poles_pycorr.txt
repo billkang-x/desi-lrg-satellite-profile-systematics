@@ -1,0 +1,21 @@
+# DESI DR1 LRG pycorr multipoles
+# s_Mpch,xi0,xi2,xi4
+# mode = smu
+# autocorr = True
+# D1D2.size1 = 1000
+# D1D2.size2 = 1000
+# D1R2.size1 = 1000
+# D1R2.size2 = 2000
+# R1D2.size1 = 2000
+# R1D2.size2 = 1000
+# R1R2.size1 = 2000
+# R1R2.size2 = 2000
+# los_type = midpoint
+# bin_type = lin
+# smid             savg               corr0(s)           corr2(s)            corr4(s)
+3.500000000000e+00 3.345295776123e+00 nan                nan                 nan
+6.500000000000e+00 6.532847400424e+00 nan                nan                 nan
+9.500000000000e+00 9.323403068310e+00 nan                nan                 nan
+1.250000000000e+01 1.254833108331e+01 nan                nan                 nan
+1.550000000000e+01 1.545130714557e+01 1.326054269063e-01 -3.723081432412e-02 -4.447229483730e-01
+1.850000000000e+01 1.830551686029e+01 4.444353673306e+00 -1.315256753136e+01 1.547444172222e+01

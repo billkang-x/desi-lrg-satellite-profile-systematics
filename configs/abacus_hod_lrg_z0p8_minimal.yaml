@@ -1,0 +1,63 @@
+# Minimal AbacusHOD LRG configuration for DESI DR1 z~0.7 pilot.
+#
+# This assumes only the z=0.800 halo_info + halo_rv_A subset has been staged
+# under:
+#   ${sim_dir}/${sim_name}/halos/z0.800/{halo_info,halo_rv_A}
+#
+# Keep this file free of credentials and machine-specific secrets.
+
+sim_params:
+  sim_name: "AbacusSummit_base_c000_ph000"
+  sim_dir: "/public3/home/scg7816/desi_hod_mocks/data/abacus_summit_minimal"
+  output_dir: "/public3/home/scg7816/desi_hod_mocks/results/abacushod_lrg_z0p8"
+  subsample_dir: "/public3/home/scg7816/desi_hod_mocks/data/abacus_summit_minimal_subsamples"
+  z_mock: 0.8
+  cleaned_halos: true
+  prepare_sim:
+    Nparallel_load: 4
+    Nthread_per_load: "auto"
+
+HOD_params:
+  want_ranks: false
+  want_AB: false
+  density_sigma: 3
+  tracer_flags:
+    LRG: true
+    ELG: false
+    QSO: false
+  want_rsd: true
+  write_to_disk: false
+  LRG_params:
+    logM_cut: 13.3
+    logM1: 14.4
+    sigma: 0.8
+    alpha: 1.0
+    kappa: 0.4
+    alpha_c: 0.0
+    alpha_s: 1.0
+    s: 0.0
+    s_v: 0.0
+    s_p: 0.0
+    s_r: 0.0
+    Acent: 0.0
+    Asat: 0.0
+    Bcent: 0.0
+    Bsat: 0.0
+    ic: 1.0
+  ELG_params: {}
+  QSO_params: {}
+
+clustering_params:
+  clustering_type: "xirppi"
+  bin_params:
+    logmin: -0.77288
+    logmax: 1.47712
+    nbins: 8
+    pimax: 30
+    pi_bin_size: 5
+
+data_params:
+  tracer_density_mean:
+    LRG: 5.31589034e-4
+  tracer_density_std:
+    LRG: 5.0e-5
