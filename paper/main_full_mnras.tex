@@ -1,0 +1,269 @@
+\documentclass[fleqn,usenatbib]{mnras}
+
+\usepackage{newtxtext,newtxmath}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{url}
+
+\newcommand{\fsat}{f_{\rm sat}}
+\newcommand{\alphas}{\alpha_{\rm s}}
+\newcommand{\wproj}{w_{\rm p}}
+\newcommand{\xizero}{\xi_0}
+\newcommand{\xitwo}{\xi_2}
+\newcommand{\hmpc}{h^{-1}{\rm Mpc}}
+\newcommand{\nbar}{\bar{n}}
+
+\input{results_numbers}
+
+\title[Satellite-profile systematics in LRG HOD fits]{Satellite radial-profile systematics in DESI LRG HOD inference from public Abacus full-box mocks}
+
+\author[Kang]{
+Dong-Biao Kang$^{1,2}$\thanks{E-mail: dbkang@zjgsdx.edu.cn}
+\\
+$^{1}$Zhejiang Guangsha Vocational and Technological University of Construction, Dongyang, Zhejiang, China\\
+$^{2}$Institute of Theoretical Physics, Chinese Academy of Sciences, Beijing, China
+}
+
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+\pubyear{2026}
+
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+\begin{abstract}
+Halo-occupation analyses of luminous red galaxy (LRG) clustering usually infer the satellite fraction and satellite velocity bias using high-fidelity mock catalogues.  We present a resource-limited but full-volume pilot analysis designed to isolate which part of the modelling drives the inferred satellite fraction.  Using the public AbacusSummit base simulation at $z=0.8$, a compact halo/subhalo-like candidate catalogue, and a DESI DR1 LRG clustering data vector over $0.6<z<0.8$, we fit exact-number-density SHAM-like and minimal-HOD samples to $\wproj(r_{\rm p})+\xizero+\xitwo$.  The baseline minimal-HOD grid favours a low satellite fraction, $\fsat=\BestHODFsat$, with $\alphas=\BestHODAlpha$, while the SHAM-like construction prefers still lower satellite fractions.  Observable splits show that this preference is driven primarily by small-scale $\wproj$.  A phenomenological radial-dilution test, in which satellite offsets from host centres are scaled by $q$, improves the heuristic fit from $\chi^2=\BaseDilChi$ to $\chi^2=\BestDilChi$ and shifts the best point to $\fsat=\BestDilFsat$ and $q=\BestDilQ$.  However, neither this test nor an NFW concentration-remapping control recovers the literature-scale $\fsat\simeq0.10$--0.15 while simultaneously matching the redshift-space multipoles.  This is not a replacement for full DESI AbacusHOD inference, but a diagnostic study of satellite-profile systematics.  The result highlights satellite radial profiles, satellite selection, and velocity bias as a coupled systematic in LRG HOD inference.
+\end{abstract}
+
+\begin{keywords}
+large-scale structure of Universe -- galaxies: haloes -- galaxies: statistics -- cosmology: observations -- methods: numerical
+\end{keywords}
+
+\section{Introduction}
+
+Galaxy redshift surveys use the clustering of biased tracers to constrain the expansion history and the growth of structure.  Baryon acoustic oscillation measurements are mainly protected by the large acoustic scale, whereas redshift-space distortions (RSDs) depend directly on the peculiar velocity field and therefore on the relation between observed galaxies and dark matter \citep{Kaiser1987,Hamilton1998,PeacockDodds1994}.  DESI was designed to exploit both probes over unprecedented volumes, with LRGs providing a high-bias tracer over the redshift range where the transition from low-redshift galaxy surveys to higher-redshift emission-line and quasar samples occurs \citep{DESI2016,DESI2024BAO,DESI2024Samples}.  This cosmological reach makes the small-scale and intermediate-scale galaxy--halo connection a practical modelling issue rather than a secondary detail.
+
+The halo occupation distribution (HOD) offers a compact empirical description of this connection by specifying how central and satellite galaxies populate haloes of a given mass \citep{PeacockSmith2000,Seljak2000,Berlind2002}.  In projected clustering, the one-halo term is especially sensitive to the satellite occupation and its radial distribution, while the two-halo term ties the same occupation model to large-scale bias.  The central--satellite decomposition developed in modern HOD modelling has been successful in interpreting luminosity- and colour-dependent clustering in SDSS and related samples \citep{Kravtsov2004,Zheng2005,Zheng2007,Zehavi2011}.  A complementary route is subhalo abundance matching (SHAM), which assigns galaxies by ranking halo or subhalo properties rather than by specifying an occupation probability.  SHAM is simple and predictive, but its clustering predictions depend on the chosen ranking variable, scatter, satellite treatment and subhalo disruption model \citep{ValeOstriker2004,Conroy2006,Reddick2013,ChavesMontero2016}.
+
+For LRGs, the satellite fraction is small enough that it can be easy to regard satellites as a nuisance, but large enough that they control important parts of the data vector.  Satellites boost small-scale $\wproj(r_{\rm p})$, create Fingers-of-God damping in redshift space, and couple velocity bias to the inferred growth signal \citep{Tinker2007,Guo2015Velocity,Guo2015RSD}.  Their spatial distribution is also not guaranteed to trace the dark-matter profile exactly.  NFW-like profiles provide a useful reference point \citep{Navarro1996}, but real or selected satellite populations can differ through incompleteness, disruption, selection effects, or correlations with host assembly history.  Halo assembly bias and galaxy assembly bias further show that halo mass alone is not always a complete coordinate for clustering predictions \citep{Gao2005,Wechsler2006,Hearin2016}.
+
+DESI-era analyses increasingly address these issues with large simulation suites and high-fidelity mock catalogues.  AbacusSummit provides the high-accuracy, high-volume $N$-body backbone for this programme \citep{Maksimova2021}, and AbacusHOD implements an efficient extended HOD framework that can include multitracer occupations, assembly-bias degrees of freedom, velocity bias and survey-relevant mock construction \citep{Yuan2022}.  Applied to DESI One-Percent clustering, this framework finds LRG satellite fractions of order ten per cent and constrains satellite velocity bias jointly with the clustering signal \citep{Yuan2024}.  Such results define the natural benchmark for any simplified analysis, but they also raise a useful diagnostic question: if one has access only to public full-box halo and satellite information rather than the complete official mock pipeline, which modelling ingredient is most responsible for an apparent shift in the inferred satellite fraction?
+
+This paper addresses that narrower question.  We do not attempt a final DESI HOD inference, nor do we replace the official AbacusHOD modelling stack.  Instead, we use a public Abacus full-box candidate catalogue with host IDs, central/satellite flags and velocities to isolate how $\fsat$, satellite velocity bias and satellite radial profile affect a DESI DR1 LRG $\wproj+\xizero+\xitwo$ data vector at $0.6<z<0.8$.  We first compare a SHAM-like construction with a minimal HOD-like occupation layer.  We then add two controlled satellite-profile tests: a deliberately phenomenological radial-dilution parameter and a more physical NFW concentration-remapping parameter.  The goal is to determine whether the low-$\fsat$ preference found in the simplified model is a robust physical statement or a symptom of a satellite-profile mismatch in the one-halo term.
+
+\section{Data and simulations}
+\label{sec:data}
+
+\subsection{Observed clustering vector}
+
+We use a DESI DR1 LRG clustering vector over $0.6<z<0.8$, combining North and South Galactic caps.  The vector consists of projected clustering $\wproj(r_{\rm p})$ over $0.5<r_{\rm p}<30\,\hmpc$ and redshift-space multipoles $\xizero,\xitwo$ over $5<s<60\,\hmpc$.  The number density used for exact matching is
+\begin{equation}
+  \nbar = \ObservedNbar\,h^3{\rm Mpc}^{-3},
+\end{equation}
+corresponding to $\TargetNgal$ galaxies in a $(\BoxSize\,\hmpc)^3$ periodic box.  For covariance-weighted observable splits we use a 96-region k-means jackknife covariance matched to the same $\wproj+\xizero+\xitwo$ vector, with the usual Hartlap factor applied to each split.
+
+\subsection{Abacus full-box candidate catalogue}
+
+The simulation backbone is AbacusSummit\_base\_c000\_ph000 at $z=\Redshift$ \citep{Maksimova2021}.  We use the full $2000\,\hmpc$ periodic box and a compact candidate catalogue built from \texttt{halo\_info} and \texttt{halo\_rv\_A}.  The catalogue contains central candidates, satellite particle candidates, host halo IDs, central/satellite flags, halo particle counts, positions, velocities and host velocities.  The expanded satellite reservoir contains $8\times10^5$ satellite candidates, sufficient to test satellite fractions up to $\fsat\simeq0.15$ at the observed number density.
+
+This catalogue is intentionally not the full AbacusHOD pipeline.  It lacks several official ingredients such as the complete AbacusHOD occupation parameterization, DESI cut-sky selection, fibre assignment, and full mock covariance.  Its value here is diagnostic: it contains host IDs and velocities in a large public box, allowing us to test how satellite fraction, velocity bias and radial profile interact.
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Occupation models}
+
+We consider two occupation constructions.  The first is a SHAM-like reservoir selection: centrals and satellites are independently ranked by a halo proxy and selected to match the target number density and requested satellite fraction.  The second is a minimal HOD-like model.  Centrals are selected using a noisy mass-rank variable with fixed scatter $\sigma_{\log M}=0.25$, while satellites are drawn only from hosts whose centrals are occupied and are weighted by host mass with satellite-power index unity.  In both cases the total number of galaxies is fixed exactly to the observed number density.
+
+The fitted parameters are the target satellite fraction $\fsat$ and the satellite velocity-bias parameter $\alphas$.  For a selected satellite, the line-of-sight velocity is
+\begin{equation}
+  v_{\rm sat,los}^{\rm model}
+  = v_{\rm host,los} + \alphas\left(v_{\rm sat,los}-v_{\rm host,los}\right).
+  \label{eq:velocitybias}
+\end{equation}
+We then displace galaxies along the $z$ axis to redshift space using the simulation redshift and Planck-like background cosmology \citep{Planck2020}.
+
+\subsection{Correlation-function measurement}
+
+We measure the periodic-box model vectors using \texttt{pycorr} with the Corrfunc engine \citep{Sinha2020,Pycorr}.  The model $\wproj$, $\xizero$ and $\xitwo$ are interpolated to the observed bin centres.  For rapid grid exploration we use a diagonal heuristic score based on fractional errors and floors:
+\begin{equation}
+  \chi^2_{\rm heur}
+  = \sum_i \left[\frac{m_i-d_i}{\sigma_i^{\rm heur}}\right]^2
+  + \left[\frac{\ln(\nbar_{\rm model}/\nbar_{\rm obs})}{0.15}\right]^2.
+\end{equation}
+Because the number density is matched exactly, the density term is negligible in all successful models.  For final observable splits we also compute covariance-weighted scores for $\wproj$, $\xizero+\xitwo$, and the full joint vector.
+
+\subsection{Satellite radial-profile controls}
+\label{sec:profiles}
+
+The first profile control is a direct radial dilution:
+\begin{equation}
+  {\bf x}_{\rm sat}^{\,\prime}
+  =
+  {\bf x}_{\rm host}
+  + q\left({\bf x}_{\rm sat}-{\bf x}_{\rm host}\right),
+  \label{eq:qprofile}
+\end{equation}
+with periodic wrapping.  This is deliberately phenomenological; it asks how strongly the result changes if satellites are made more extended than the raw reservoir.
+
+The second control is an NFW concentration remapping.  We estimate a host radius $R_{200{\rm m}}$ from the host particle count and Abacus particle mass, adopt a reference concentration $c_{\rm ref}=5$, and compute the normalized radius $y=r/R_{200{\rm m}}$.  The enclosed NFW fraction is
+\begin{equation}
+  F(y;c) =
+  \frac{\ln(1+cy)-cy/(1+cy)}
+       {\ln(1+c)-c/(1+c)}.
+  \label{eq:nfwcdf}
+\end{equation}
+For each satellite we keep its NFW quantile fixed, $F(y;c_{\rm ref})$, and place it at the corresponding radius in a target profile $c_{\rm sat}=c_{\rm ref}c_{\rm ratio}$.  This remapping keeps the satellite direction and velocity residual unchanged while changing the radial concentration in a physically interpretable way.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Baseline HOD and SHAM grids}
+
+Table~\ref{tab:bestfits} summarizes the main heuristic best fits.  The table should be read as a controlled sequence of modelling tests, not as independent final inferences: each row adds one layer of satellite modelling freedom to diagnose the origin of the low-$\fsat$ preference.
+
+\begin{table*}
+  \centering
+  \caption{Summary of the main heuristic best-fit points.  The direct radial-dilution parameter $q$ is phenomenological, while the NFW control varies $c_{\rm sat}/c_{\rm ref}$ at fixed NFW enclosed-mass quantile.}
+  \label{tab:bestfits}
+  \begin{tabular}{lccccc}
+    \toprule
+    Model & $\fsat$ & $\alphas$ & profile parameter & $\chi^2_{\rm heur}$ & Interpretation \\
+    \midrule
+    SHAM-like reservoir & \BestShamFsat & \BestShamAlpha & none & \BestShamChi & lowest-$\fsat$ baseline \\
+    minimal HOD & \BestHODFsat & \BestHODAlpha & none & \BestHODChi & occupation layer improves fit \\
+    minimal HOD + radial dilution & \BestDilFsat & \BestDilAlpha & $q=\BestDilQ$ & \BestDilChi & strong profile sensitivity \\
+    minimal HOD + NFW remapping & \BestNFWFsat & \BestNFWAlpha & $c_{\rm sat}/c_{\rm ref}=\BestNFWCratio$ & \BestNFWChi & physical concentration control \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+Figure~\ref{fig:baselineheatmap} compares the extended $\fsat$--$\alphas$ grids.  The SHAM-like reservoir prefers $\fsat=\BestShamFsat$, $\alphas=\BestShamAlpha$, with $\chi^2_{\rm heur}\simeq\BestShamChi$.  The minimal HOD-like occupation improves the fit and shifts the best point to $\fsat=\BestHODFsat$, $\alphas=\BestHODAlpha$, with $\chi^2_{\rm heur}=\BestHODChi$.  Nevertheless, both models strongly penalize $\fsat\simeq0.10$--0.15, in tension with the order-of-magnitude satellite fractions reported in full DESI One-Percent and BOSS/eBOSS HOD analyses \citep{Yuan2022,Yuan2024}.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=0.86\textwidth]{figures/fig_extended_grid_heatmaps.png}
+  \caption{Baseline extended SHAM-like and minimal-HOD grids.  Each cell shows $\Delta\chi^2_{\rm heur}$ relative to the best point, minimized over the plotted parameters.  The minimal-HOD occupation improves over the SHAM-like reservoir but still favours a low satellite fraction.}
+  \label{fig:baselineheatmap}
+\end{figure*}
+
+The observable split explains the low-$\fsat$ preference.  The projected clustering $\wproj(r_{\rm p})$ penalizes high satellite fractions much more strongly than the large-scale multipoles.  In the minimal-HOD case, $\xizero+\xitwo$ with the full covariance can prefer a somewhat higher satellite fraction, while $\wproj$ pulls the joint solution back to low $\fsat$.
+
+\subsection{Phenomenological radial dilution}
+
+The direct radial-dilution test confirms that the satellite radial profile is a leading systematic.  Allowing $q$ in equation~(\ref{eq:qprofile}) improves the minimal-HOD heuristic score from the $q=1$ baseline $\chi^2_{\rm heur}=\BaseDilChi$ to $\chi^2_{\rm heur}=\BestDilChi$ at $\fsat=\BestDilFsat$, $\alphas=\BestDilAlpha$ and $q=\BestDilQ$.  Figure~\ref{fig:profiledilution} shows that increasing $q$ reduces the penalty for higher satellite fractions but does not make $\fsat=0.10$--0.12 competitive.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=0.86\textwidth]{figures/fig_profile_dilution_heatmaps.png}
+  \caption{Radial-dilution test.  The direct scaling parameter $q$ lowers the small-scale $\wproj$ penalty and shifts the heuristic minimal-HOD best fit to $\fsat=0.06$, but high satellite fractions remain disfavoured.}
+  \label{fig:profiledilution}
+\end{figure*}
+
+This behaviour is clearer in Fig.~\ref{fig:tradeoff}.  Increasing $q$ systematically reduces the $\wproj$ contribution for each satellite fraction.  The RSD quadrupole, however, does not respond in the same way.  This creates a trade-off: the model can reduce the small-scale projected excess, but it cannot freely move to high $\fsat$ without degrading the multipoles.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=0.95\textwidth]{figures/fig_profile_tradeoff.png}
+  \caption{Observable trade-off in the minimal-HOD radial-dilution grid.  The main gain from increasing $q$ comes from $\wproj$, while the multipole contribution responds differently.  This split is the origin of the joint-fit tension.}
+  \label{fig:tradeoff}
+\end{figure*}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_wp_profile_curves.png}
+  \caption{Projected clustering for selected minimal-HOD profile models.  The same-parameter $q=1$ and $q=4$ curves show directly how radial dilution changes the small-scale $\wproj$ mismatch.}
+  \label{fig:wpcurves}
+\end{figure}
+
+The covariance-weighted split is more conservative than the heuristic score.  For the direct radial-dilution grid, the full joint covariance still selects $\fsat=0.04$ and $q=4$, while the heuristic score selects $\fsat=0.06$.  We interpret this not as a contradiction but as evidence that $\wproj$ and RSD multipoles are pulling in partially different directions in the simplified model.
+
+\subsection{NFW concentration-remapping control}
+\label{sec:nfwresults}
+
+The NFW concentration-remapping grid provides a more physical counterpart to the direct $q$ scaling.  The best point is $\fsat=\BestNFWFsat$, $\alphas=\BestNFWAlpha$, and $c_{\rm ratio}=\BestNFWCratio$ ($c_{\rm sat}=\BestNFWCsat$), with $\chi^2_{\rm heur}=\BestNFWChi$.  Relative to the $c_{\rm ratio}=1$ baseline, $\chi^2_{\rm heur}=\BestNFWBaseChi$, this is only a modest improvement.  The remapping changes the satellite radii at fixed NFW quantile rather than applying an arbitrary linear dilation.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_nfw_profile_heatmap.png}
+  \caption{NFW concentration-remapping control.  The plotted quantity is $\Delta\chi^2_{\rm heur}$, minimized over $\alphas$, as a function of target satellite fraction and concentration ratio $c_{\rm sat}/c_{\rm ref}$.  This physically motivated profile freedom tests whether a standard concentration change can reproduce the large improvement seen in the direct $q$-dilution experiment.}
+  \label{fig:nfwprofile}
+\end{figure}
+
+The key point is that the NFW remapping does not erase the low-$\fsat$ tendency.  The best high-satellite rows at $\fsat=0.10$ and $0.12$ have $\chi^2_{\rm heur}=\BestNFWTenChi$ and $\BestNFWTwelveChi$, respectively, still far above the low-$\fsat$ solutions.  Thus, within this constrained NFW-family control, varying concentration alone is not sufficient to recover the $\fsat\simeq0.10$--0.15 region while also matching $\xizero+\xitwo$.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What causes the low satellite fraction?}
+
+The strongest conclusion is not that DESI LRG clustering generically requires a very low satellite fraction.  Rather, in this public full-box compact-mock setup, the inferred $\fsat$ is highly sensitive to the satellite radial profile used by the simplified occupation model.  A model with too much one-halo projected power is driven toward low $\fsat$ by $\wproj(r_{\rm p})$, even if the redshift-space multipoles could accommodate a larger satellite contribution.
+
+This conclusion also explains why the result should not be read as a contradiction of full AbacusHOD analyses.  The official AbacusHOD framework includes a richer satellite model, assembly bias, cleaned haloes, DESI-like selection and more realistic covariance treatment \citep{Yuan2022,Yuan2024}.  Our analysis isolates one part of that modelling stack.  Its value is diagnostic: it shows that satellite radial profile and velocity bias are coupled strongly enough that fixing one of them can bias the other.
+
+The main empirical signature is therefore not a uniform preference across the whole clustering vector.  The low-$\fsat$ preference is driven by $\wproj$, not by the full clustering vector uniformly.  In the split fits, small-scale projected clustering carries the strongest penalty against high satellite fractions, while $\xizero+\xitwo$ can move in a different direction once velocity bias and profile changes are allowed.  This observable dependence is the reason we interpret the result as a profile-systematics diagnostic rather than a direct physical measurement of the DESI LRG satellite fraction.
+
+\subsection{Comparison with literature}
+
+Table~\ref{tab:literature} places the present diagnostic best fits next to representative HOD measurements.  The comparison is intentionally qualitative: the external results use richer occupation models and, in the DESI case, the AbacusHOD modelling framework, whereas our rows use a compact public full-box reservoir and simplified occupations.
+
+\begin{table*}
+  \centering
+  \caption{Comparison of satellite fractions and satellite velocity-bias parameters.  The lower values in this work are diagnostic preferences from simplified public-box mocks, not final DESI HOD posterior constraints.}
+  \label{tab:literature}
+  \begin{tabular}{lcccc}
+    \toprule
+    Analysis & Sample / observable & $\fsat$ & $\alphas$ & Interpretation \\
+    \midrule
+    This work, minimal HOD & DESI DR1 LRG, $\wproj+\xizero+\xitwo$, $q=1$ & \BestHODFsat & \BestHODAlpha & compact-profile baseline \\
+    This work, radial dilution & DESI DR1 LRG, $\wproj+\xizero+\xitwo$, $q=\BestDilQ$ & \BestDilFsat & \BestDilAlpha & profile-sensitive diagnostic \\
+    This work, NFW remapping & DESI DR1 LRG, $\wproj+\xizero+\xitwo$ & \BestNFWFsat & \BestNFWAlpha & concentration-family control \\
+    DESI One-Percent AbacusHOD & LRG RSD fit at $0.6<z<0.8$ \citep{Yuan2024} & $0.136\pm0.011$ & $0.95^{+0.07}_{-0.06}$ & full AbacusHOD benchmark \\
+    DESI One-Percent AbacusHOD & LRG $\wproj$-only fit \citep{Yuan2024} & $0.104^{+0.023}_{-0.019}$ & -- & projected-clustering benchmark \\
+    BOSS CMASS AbacusHOD & full-shape clustering \citep{Yuan2022} & $\simeq0.11$ & $\simeq0.98$ & lower-redshift HOD benchmark \\
+    BOSS/eBOSS LRG HOD & $z\simeq0.7$ LRG clustering \citep{Zhai2017} & $0.13\pm0.03$ & -- & broader LRG comparison \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+This table clarifies why our low $\fsat$ cannot be directly equated with a physically low DESI satellite fraction.  The literature values marginalize over more complete halo-occupation descriptions, and in some cases over assembly-bias or velocity-bias degrees of freedom that are absent from the compact model used here.  By contrast, our result changes substantially when satellites are radially diluted and remains tied to the tension between $\wproj$ and the redshift-space multipoles.  The discrepancy is therefore best read as evidence that an over-concentrated or otherwise mismatched satellite reservoir can force simplified fits toward artificially low $\fsat$.
+
+\subsection{Implications for resource-limited mock analyses}
+
+Many practical analyses cannot immediately run the complete suite of official mocks.  The present workflow suggests a staged strategy.  First, use a large public full box to match number density and broad clustering.  Secondly, split $\wproj$ from $\xizero+\xitwo$ to identify which observable drives the parameter preference.  Thirdly, introduce minimal physical profile controls before interpreting $\fsat$ as a robust astrophysical measurement.  Without the last step, an apparently precise low satellite fraction may mainly reflect a profile mismatch.
+
+\subsection{Limitations}
+
+Several limitations remain.  The covariance is based on a 96-region jackknife rather than a large ensemble of independent survey mocks.  The box is periodic and lacks the full DESI angular and radial selection.  Fibre assignment and imaging systematics are not modelled.  The minimal-HOD layer is intentionally simpler than AbacusHOD, and the NFW remapping uses a proxy $R_{200{\rm m}}$ from halo particle count rather than a full halo-property table.  These choices are acceptable for a diagnostic paper, but they prevent this work from being a definitive DESI HOD inference.
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+We have used a public Abacus full-box compact catalogue to study the sensitivity of DESI LRG HOD inference to satellite fraction, velocity bias and satellite radial profile.  This is not a replacement for full DESI AbacusHOD inference, but a diagnostic study of satellite-profile systematics.  Our main conclusions are:
+
+\begin{enumerate}
+  \item A SHAM-like satellite reservoir and a minimal-HOD occupation layer both prefer low satellite fractions when fit to $\wproj+\xizero+\xitwo$ at the DESI DR1 LRG number density.  The minimal-HOD model improves the fit but still favours $\fsat=\BestHODFsat$ in the baseline grid.
+  \item Observable splits show that small-scale $\wproj(r_{\rm p})$ is the dominant source of the low-$\fsat$ preference.  The low-$\fsat$ preference is driven by $\wproj$, not by the full clustering vector uniformly; the redshift-space multipoles alone can prefer a different region of parameter space.
+  \item A direct radial-dilution test improves the heuristic minimal-HOD fit from $\chi^2=\BaseDilChi$ to $\chi^2=\BestDilChi$ and moves the best point to $\fsat=\BestDilFsat$, demonstrating that the satellite radial profile is a major systematic.
+  \item A more physical NFW concentration-remapping control confirms that ordinary concentration changes alone do not make $\fsat=0.10$--0.15 competitive in the simplified model.
+  \item The robust interpretation is therefore a modelling diagnostic: satellite radial profile, satellite selection and velocity bias must be fit jointly before a low inferred satellite fraction is interpreted physically.
+\end{enumerate}
+
+The most valuable future extension is to turn this diagnostic result into a full joint inference of satellite fraction, velocity bias and satellite radial profile.  This will require replacing the compact occupation layer with an official AbacusHOD or equivalent halo-occupation model, fitting a physical satellite-profile parameter together with $\fsat$ and $\alphas$, and propagating the result through DESI-like selection, fibre assignment and a mock-based covariance.  A particularly useful next test would be to compare LRG samples across redshift or luminosity with the same $\wproj+\xizero+\xitwo$ split, since such a comparison can determine whether the profile-driven low-$\fsat$ tendency is a generic feature of the simplified satellite prescription or a sample-dependent effect.  These steps would move the present pilot study from a modelling-systematics diagnosis toward a quantitative DESI HOD constraint.
+
+\section*{Acknowledgements}
+
+This work uses public AbacusSummit simulation products and DESI LRG clustering measurements.  The analysis was developed as a resource-limited pilot study using local Windows processing and ParaCloud cluster runs.  The author thanks Lehman Garrison for providing helpful information about the Abacus data source.  The author acknowledges support from the National Natural Science Foundation of China under Grant No. 11303079, and from Zhejiang Guangsha Vocational and Technological University of Construction under Grant No. 2022KYQD-KDB.
+
+\section*{Data Availability}
+
+The analysis scripts, lightweight summary tables, figure-generation products and manuscript source are available at \url{https://github.com/billkang-x/desi-lrg-satellite-profile-systematics}.  Large external catalogues and regenerated binary products are not included in the repository.  The AbacusSummit input products are publicly available from the AbacusSummit data release, and the DESI clustering measurements used here are public DESI DR1 LRG measurements or derived products from the same data vector.
+
+\bibliographystyle{mnras}
+\bibliography{references}
+
+\label{lastpage}
+\end{document}

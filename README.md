@@ -21,7 +21,8 @@ AbacusHOD inference.
 - `jobs/`: cluster job wrappers used for the Abacus full-box grid tests.
 - `results/`: lightweight CSV/JSON/TXT summary products only.
 - `docs/`: planning notes and staging documentation.
-- `paper/`: LaTeX source, references, figures and the current draft PDF.
+- `paper/`: LaTeX source, references, figures, the preserved full MNRAS draft,
+  and a compressed 5-page MNRAS Letter version.
 
 The large AbacusSummit halo products, DESI random catalogues, TNG intermediate
 files and regenerated binary model vectors are intentionally not tracked. They

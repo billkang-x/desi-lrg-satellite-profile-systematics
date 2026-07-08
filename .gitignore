@@ -37,6 +37,7 @@ paper/*.out
 paper/*.run.xml
 paper/*.synctex.gz
 paper/main.pdf
+paper/main_*.pdf
 
 # OS metadata
 .DS_Store
