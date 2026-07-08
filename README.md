@@ -6,6 +6,9 @@ paper source for:
 **Constraining satellite fraction and velocity bias from DESI DR1 galaxy
 clustering with HOD/SHAM mocks**
 
+Repository URL:
+<https://github.com/billkang-x/desi-lrg-satellite-profile-systematics>
+
 The current manuscript presents a diagnostic study of how simplified satellite
 selection, satellite radial profile and velocity-bias prescriptions affect
 DESI-like LRG clustering constraints. It is not a replacement for a full DESI
